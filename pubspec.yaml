@@ -38,6 +38,7 @@ dependencies:
   auto_route: ^3.2.1
   chopper: ^4.0.4
   json_annotation: ^4.4.0
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
