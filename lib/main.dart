@@ -6,8 +6,11 @@ import 'app/app.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   bootstrap(
-    builder: () {
-      return const MyApp();
+    builder: (api, box) {
+      return MyApp(
+        api: api,
+        box: box,
+      );
     },
   );
 }

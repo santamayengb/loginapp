@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:loginapp/Onboarding/login.page.dart';
 import 'package:loginapp/app/widget/bloc_provider.wrapper.dart';
 import 'package:loginapp/app/widget/repository.wrapper.dart';
-import 'package:loginapp/authflow/authflow.page.dart';
+import 'package:loginapp/services/chopper_api.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, required this.api, required this.box})
+      : super(key: key);
 
-  // This widget is the root of your application.
+  final ApiService api;
+  final Box box;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,8 +18,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RepositoryProviderWrapper(
-          child: MultiBlocProverWrapper(child: AuthFlow())),
+      home: RepositoryWrapper(
+          apiService: api,
+          child: MultiBlocProverWrapper(
+              apiService: api, box: box, child: LoginPage())),
     );
   }
 }
